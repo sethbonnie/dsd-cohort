@@ -14,6 +14,10 @@ Welcome to Smoothie Buddy, your ultimate companion for crafting the perfect smoo
 
 ## Installation
 
+```sh
+npm install
+```
+
 ## Usage
 
 ## Support
