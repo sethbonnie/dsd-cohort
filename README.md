@@ -12,12 +12,13 @@ Welcome to Smoothie Buddy, your ultimate companion for crafting the perfect smoo
 
 ## Getting Started
 
-
 ## Installation
 
+```sh
+npm install
+```
 
 ## Usage
-
 
 ## Support
 
@@ -34,4 +35,3 @@ Smoothie Buddy is licensed under the MIT License. See the LICENSE file for more 
 ## Acknowledgments
 
 A big thank you to the community of smoothie enthusiasts and developers who have contributed to making Smoothie Buddy a valuable resource for smoothie lovers everywhere!
-
