@@ -1,3 +1,9 @@
+/* Apply custom style to the input field */
+.quantity-input {
+  width: 70px; /* Adjust the width as needed */
+  text-align: center;
+}
+
 .App {
   text-align: center;
 }
@@ -34,5 +40,11 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 768px) {
+  .App-header {
+    background-image: linear-gradient(to top, #dfa94b, #bb545e);
   }
 }
