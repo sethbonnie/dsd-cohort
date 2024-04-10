@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -14,14 +15,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  padding-top: 30px;
+  align-items: start;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #282c34;
 }
 
 .App-link {
@@ -35,4 +36,30 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (min-width: 768px) {
+  .App-header {
+    background-image: linear-gradient(to top, #dfa94b, #bb545e);
+  }
+}
+
+@media (min-width: 5px) {
+  .m-0 {
+  /*box-shadow: 10px 10px 5px pink;*/
+    box-shadow: 10px 10px 1px black;
+    background-color: peru;
+    height: 60px;
+    align-content: center;
+  }
+}
+
+.Panel {
+  background-color: pink;
+}
+
+.middle-card {
+  align-content: bottom;
+  height: 30px;
+  background-color: peru;
 }
