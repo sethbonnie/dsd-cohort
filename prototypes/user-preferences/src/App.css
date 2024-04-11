@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
 }
@@ -46,7 +45,7 @@
 
 @media (min-width: 5px) {
   .m-0 {
-  /*box-shadow: 10px 10px 5px pink;*/
+    /*box-shadow: 10px 10px 5px pink;*/
     box-shadow: 10px 10px 1px black;
     background-color: peru;
     height: 60px;
@@ -56,6 +55,10 @@
 
 .Panel {
   background-color: pink;
+}
+
+.p-panel-title {
+  font-size: 1.5rem;
 }
 
 .middle-card {
