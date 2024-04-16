@@ -7,7 +7,7 @@ import json
 # https://api.edamam.com/doc/open-api/nutrition-analysis-v1.json
 
 def read_ingredients():
-    with open('../frontend/data/ingredients.json', 'r') as ingredients_json:
+    with open('./frontend/data/ingredients.json', 'r') as ingredients_json:
         ingredients_text = ingredients_json.read()
         ingredients = json.loads(ingredients_text)
         return ingredients["ingredients"]
@@ -26,7 +26,7 @@ def make_json():
         api_data = get_nutrition_data(ingredient)
         all_data.append(api_data)
 
-    with open('../frontend/data/nutrition_data.json', 'w') as nutrition_file:
+    with open('./frontend/data/nutrition_data.json', 'w') as nutrition_file:
         json.dump(all_data, nutrition_file, indent=4)
         
 
