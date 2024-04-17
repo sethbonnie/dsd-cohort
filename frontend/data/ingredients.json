@@ -39,7 +39,7 @@
                 "1 tablespoon maple syrup"
             ], 
 
-            "imageURL" : "../public/img/green-machine.jpg"
+            "imageURL" : "/img/green-machine.jpg"
         },
         "Coffee and Cream Smoothie": {
             "main": [
@@ -50,7 +50,7 @@
                 "1/4 ground cinnamon"
             ],
             "optional": [],
-            "imageURL": "../public/img/coffee-and-cream.jpg"
+            "imageURL": "/img/coffee-and-cream.jpg"
         },
         "Pumpkin Pie Smoothie": {
             "main": [
@@ -64,7 +64,7 @@
             "optional": [
                 "2 tablespoons whipped cream"
             ],
-            "imageURL": "../public/img/pumpkin-pie.jpg"
+            "imageURL": "/img/pumpkin-pie.jpg"
         },
         "Creamy Carrot Cake Smoothie": {
             "main": [
@@ -77,7 +77,7 @@
             "optional": [
                 "2 tablespoons chopped walnuts"
             ],
-            "imageURL": "../public/img/creamy-carrot-cake.jpg"
+            "imageURL": "/img/creamy-carrot-cake.jpg"
         },
         "Minty Watermelon Cooler": {
             "main": [
@@ -88,7 +88,7 @@
                 "1 cup coconut water"
             ],
             "optional": [],
-            "imageURL": "../public/img/minty-watermelon.jpg"
+            "imageURL": "/img/minty-watermelon.jpg"
         },
         "Classic Strawberry Banana Smoothie": {
             "main": [
@@ -101,7 +101,7 @@
                 "1 tablspoon honey",
                 "1 tablspoon maple syrup"
             ],
-            "imageURL": "../public/img/strawberry-banana.jpg"
+            "imageURL": "/img/strawberry-banana.jpg"
         },
         "Tropical Green Smoothie": {
             "main": [
@@ -116,7 +116,7 @@
                 "1 handful spinach",
                 "1 cup milk"
             ],
-            "imageURL": "../public/img/tropical-green.jpg"
+            "imageURL": "/img/tropical-green.jpg"
         },
         "Chocolate Peanut Butter Protein Smoothie": {
             "main": [
@@ -129,7 +129,7 @@
                 "1 tablespoon cocoa powder",
                 "1/4 cup Greek yogurt"
             ],
-            "imageURL": "../public/img/chocolate-peanut-butter.jpg"
+            "imageURL": "/img/chocolate-peanut-butter.jpg"
         },
         "Berry Blast Smoothie": {
             "main": [
@@ -142,7 +142,7 @@
                 "1 tablespoon honey",
                 "1 tablespoon maple syrup"
             ],
-            "imageURL": "../public/img/berry-blast.jpg"
+            "imageURL": "/img/berry-blast.jpg"
         },
         "Mango Madness Smoothie": {
             "main": [
@@ -157,7 +157,7 @@
                 "1/4 teaspoon ginger",
                 "1 cup milk"
             ],
-            "imageURL": "../public/img/mango-madness.jpg"
+            "imageURL": "/img/mango-madness.jpg"
         }
     }
 }
