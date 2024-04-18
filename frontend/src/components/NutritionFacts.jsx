@@ -2,25 +2,52 @@ import ingredients from '../data/ingredients.json'
 import nutritionData from '../data/nutrition_data.json'
 import './NutritionFacts.css';
 
-
-// Need the parent to pass down what recipe user wants to see the nutrition facts for
 export default function NutritionFacts(props) {
-    // Bring in the desired recipe from user
-    // Find the ingredients for the recipe in the ingredients.json
-    // parse through the nutritionData.json and extract the nutrition data for each ingredient
-    // Sum the nutrition values and render on screen 
     let sumNutrition = {
-        "calories": 0,
-        "totalFat": 0,
-        "cholesterol": 0,
-        "sodium": 0,
-        "carbohydrates": 0,
-        "protein": 0,
-        "vitaminD": 0,
-        "calcium": 0,
-        "iron": 0,
-        "potassium": 0,
-        "vitaminC": 0,
+        "Calories": {
+            "quantity": 0,
+            "unit": "kcal"
+        },
+        "Total Fat": {
+            "quantity": 0,
+            "unit": "g"
+        },
+        "Cholesterol": {
+            "quantity": 0,
+            "unit": "mg"
+        },
+        "Sodium": {
+            "quantity": 0,
+            "unit": "mg"
+        },
+        "Carbohydrates": {
+            "quantity": 0,
+            "unit": "g"
+        },
+        "Protein": {
+            "quantity": 0,
+            "unit": "g"
+        },
+        "Vitamin-D": {
+            "quantity": 0,
+            "unit": "IU"
+        },
+        "Calcium": {
+            "quantity": 0,
+            "unit": "mg"
+        },
+        "Iron": {
+            "quantity": 0,
+            "unit": "mg"
+        },
+        "Potassium": {
+            "quantity": 0,
+            "unit": "mg"
+        },
+        "Vitamin-C": {
+            "quantity": 0,
+            "unit": "mg"
+        },
     }
 
     function findIngredients(recipe) {
@@ -47,17 +74,17 @@ export default function NutritionFacts(props) {
         let dataArray = parseNutritionData(recipe)
         console.log(dataArray)
         for (let i = 0; i < dataArray.length; i++) {
-            sumNutrition["calories"] += dataArray[i]["ENERC_KCAL"]["quantity"];
-            sumNutrition["totalFat"] += dataArray[i]["FAT"]["quantity"];
-            sumNutrition["cholesterol"] += dataArray[i]["CHOLE"]["quantity"];
-            sumNutrition["sodium"] += dataArray[i]["NA"]["quantity"];
-            sumNutrition["carbohydrates"] += dataArray[i]["CHOCDF"]["quantity"];
-            sumNutrition["protein"] += dataArray[i]["PROCNT"]["quantity"];
-            sumNutrition["vitaminD"] += dataArray[i]["VITD"]["quantity"];
-            sumNutrition["calcium"] += dataArray[i]["CA"]["quantity"];
-            sumNutrition["iron"] += dataArray[i]["FE"]["quantity"];
-            sumNutrition["potassium"] += dataArray[i]["K"]["quantity"];
-            sumNutrition["vitaminC"] += dataArray[i]["VITC"]["quantity"];
+            sumNutrition["Calories"]["quantity"] += Math.round(dataArray[i]["ENERC_KCAL"]["quantity"]);
+            sumNutrition["Total Fat"]["quantity"] += Math.round(dataArray[i]["FAT"]["quantity"]);
+            sumNutrition["Cholesterol"]["quantity"] += Math.round(dataArray[i]["CHOLE"]["quantity"]);
+            sumNutrition["Sodium"]["quantity"] += Math.round(dataArray[i]["NA"]["quantity"]);
+            sumNutrition["Carbohydrates"]["quantity"] += Math.round(dataArray[i]["CHOCDF"]["quantity"]);
+            sumNutrition["Protein"]["quantity"] += Math.round(dataArray[i]["PROCNT"]["quantity"]);
+            sumNutrition["Vitamin-D"]["quantity"] += Math.round(dataArray[i]["VITD"]["quantity"]);
+            sumNutrition["Calcium"]["quantity"] += Math.round(dataArray[i]["CA"]["quantity"]);
+            sumNutrition["Iron"]["quantity"] += Math.round(dataArray[i]["FE"]["quantity"]);
+            sumNutrition["Potassium"]["quantity"] += Math.round(dataArray[i]["K"]["quantity"]);
+            sumNutrition["Vitamin-C"]["quantity"] += Math.round(dataArray[i]["VITC"]["quantity"]);
 
         }
     }
@@ -65,23 +92,16 @@ export default function NutritionFacts(props) {
     sumNutritionData("Green Machine Smoothie")
 
     console.log(sumNutrition)
+    const keys = Object.keys(sumNutrition)
+    const sumValues = Object.values(sumNutrition)
+    sumValues.forEach(object => Math.round(object["quantity"]));
     return (
 
-        <div class="nutritionCard">
+        <div className="nutritionCard">
             <h1>Nutrition Facts</h1>
             <h3>Serving Size <p>1 shake</p></h3>
              <ul>
-                <li><h2>Calories</h2>{sumNutrition["calories"]}</li>
-                <li><h4>Total Fat</h4>{sumNutrition["totalFat"]}</li>
-                <li><h4>Cholesterol</h4>{sumNutrition["cholesterol"]}</li>
-                <li><h4>Sodium</h4>{sumNutrition["sodium"]}</li>
-                <li><h4>Carbohydrates</h4>{sumNutrition["carbohydrates"]}</li>
-                <li><h4>Protein</h4>{sumNutrition["protein"]}</li>
-                <li><h4>Vitamin C</h4>{sumNutrition["vitaminC"]}</li>
-                <li><h4>Vitamin D</h4>{sumNutrition["vitaminD"]}</li>
-                <li><h4>Calcium</h4>{sumNutrition["calcium"]}</li>
-                <li><h4>Potassium</h4>{sumNutrition["potassium"]}</li>
-                <li><h4>Iron</h4>{sumNutrition["iron"]}</li>
+                {keys.map((key, index) => <li><h4>{key}</h4>{sumValues[index]["quantity"]} {sumValues[index]["unit"]}</li>)}
             </ul>
         </div>
 
