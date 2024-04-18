@@ -116,12 +116,7 @@ export default function Kitchen() {
       quantity: 3,
       servings: 1,
     },
-    // Add more products as needed
   ]);
-
-  //--------------STATIC ARRAY OF HARDCODED DATA FOR TABLE (eventually transplant to .json file)--------------
-
-  //--------------FUNCTION FOR TABLE QUANTITY INPUT FIELD--------------
 
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
@@ -133,10 +128,6 @@ export default function Kitchen() {
     setProducts(updatedProducts);
   };
 
-  //--------------FUNCTION FOR TABLE QUANTITY INPUT FIELD--------------
-
-  //--------------FUNCTION FOR TABLE QUANTITY INPUT FIELD--------------
-
   const onServingsChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
       if (product.name === rowData.name) {
@@ -146,10 +137,6 @@ export default function Kitchen() {
     });
     setProducts(updatedProducts);
   };
-
-  //--------------FUNCTION FOR TABLE QUANTITY INPUT FIELD--------------
-
-  //--------------FUNCTION FOR TABLE QUANTITY TEMPLATE--------------
 
   const quantityEditor = (rowData) => {
     return (
@@ -161,14 +148,10 @@ export default function Kitchen() {
         step={0.25}
         decrementButtonClassName="p-button-danger"
         incrementButtonClassName="p-button-success"
-        inputClassName="quantity-input" // Apply custom class for input field
+        inputClassName="quantity-input"
       />
     );
   };
-
-  //--------------FUNCTION FOR TABLE QUANTITY TEMPLATE--------------
-
-  //--------------FUNCTION FOR TABLE SERVINGS TEMPLATE--------------
 
   const servingsEditor = (rowData) => {
     return (
@@ -180,22 +163,14 @@ export default function Kitchen() {
         step={1}
         decrementButtonClassName="p-button-danger"
         incrementButtonClassName="p-button-success"
-        inputClassName="quantity-input" // Apply custom class for input field
+        inputClassName="quantity-input"
       />
     );
   };
 
-  //--------------FUNCTION FOR TABLE SERVINGS TEMPLATE--------------
-
-  //--------------FUNCTION FOR DELETE HANDLER TEMPLATE--------------
-
   const deleteHandler = (rowData) => {
     return <Button label="" icon="pi pi-trash" className="trash" />;
   };
-
-  //--------------FUNCTION FOR DELETE HANDLER TEMPLATE--------------
-
-  //--------------dummy data used for autocomplete item name field--------------
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
@@ -239,10 +214,6 @@ export default function Kitchen() {
     setFilteredItems(_filteredItems);
   };
 
-  //--------------dummy data used for autocomplete item name field--------------
-
-  //--------------data and functions for category and size drop downs--------------
-
   const [cvalue, setCvalue] = useState("");
   const [svalue, setSvalue] = useState("");
   const [categories, setCategories] = useState([]);
@@ -271,8 +242,6 @@ export default function Kitchen() {
       event.query ? [...Array().keys()].map((size) => event.query) : _size
     );
   };
-
-  //--------------data and functions for category and size drop downs--------------
 
   const [value2, setValue2] = useState();
 
@@ -337,7 +306,6 @@ export default function Kitchen() {
           <Accordion activeIndex={0} collapseIcon expandIcon>
             <AccordionTab header="Enter New Item">
               <AutoComplete
-                //--------------TEXT FIELD FOR ITEM NAME WITH AUTOCOMPLETE--------------
                 value={selectedItem}
                 onChange={(e) => setSelectedItem(e.value)}
                 suggestions={filteredItems}
@@ -345,35 +313,28 @@ export default function Kitchen() {
                 field="label"
                 optionGroupLabel="label"
                 optionGroupChildren="items"
-                // optionGroupTemplate={groupedItemTemplate}
                 placeholder="enter item name"
-                //--------------TEXT FIELD FOR ITEM NAME WITH AUTOCOMPLETE--------------
               />
 
               <AutoComplete
-                //--------------DROP DOWN FOR ITEM CATEGORY--------------
                 value={cvalue}
                 suggestions={categories}
                 completeMethod={search_cat}
                 onChange={(e) => setCvalue(e.value)}
                 dropdown
                 placeholder="select category"
-                //--------------DROP DOWN FOR ITEM CATEGORY--------------
               />
 
               <AutoComplete
-                //--------------DROP DOWN FOR ITEM SIZE/VOLUME--------------
                 value={svalue}
                 suggestions={sizes}
                 completeMethod={search_size}
                 onChange={(e) => setSvalue(e.value)}
                 dropdown
                 placeholder="select size/volume"
-                //--------------DROP DOWN FOR ITEM SIZE/VOLUME--------------
               />
 
               <InputNumber
-                //--------------INPUT FIELD FOR ITEM QUANTITY--------------
                 inputId="horizontal-buttons"
                 placeholder="enter item quantity"
                 onValueChange={(e) => setValue2(e.value)}
@@ -382,12 +343,6 @@ export default function Kitchen() {
                 step={0.25}
                 decrementButtonClassName="p-button-danger"
                 incrementButtonClassName="p-button-success"
-
-                // incrementButtonIcon="+"
-                // decrementButtonIcon="-"
-                // mode="currency"
-                // currency="USA"
-                //--------------INPUT FIELD FOR ITEM QUANTITY--------------
               />
 
               <br></br>
