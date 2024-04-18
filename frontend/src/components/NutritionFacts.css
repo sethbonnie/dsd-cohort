@@ -1,0 +1,37 @@
+.nutritionCard {
+    height: 100%;
+    width: 400px;
+    font-size: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    
+}
+
+.servingSize {
+    border-bottom: 12px solid #ced4da;
+}
+
+h1 {
+    border-bottom: 3px solid #ced4da;
+}
+
+h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 12px solid #ced4da;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    list-style: none;
+    gap: 12px;
+    border-bottom: 1px solid #ced4da;
+}
