@@ -20,6 +20,16 @@ npm install
 
 ## Usage
 
+- **THIS IS FOR THE PYTHON SCRIPT LOCATED IN THE `SCRIPTS` DIRECTORY**
+
+1. Install virtual environment in root directory('smoothie-buddy'): `python3 -m venv .venv`
+
+2. Activate virtual environment: `source .venv/bin/activate` for MacOS `source .venv/Scripts/activate` for WindowsOS
+
+3. Install requirements for script: `pip install -r scripts/requirements.txt`
+
+4. Run script: `python3 scripts/download_nutrition.py`
+
 ## Support
 
 If you encounter any issues or have questions, please contact our support team at support@smoothiebuddy.com.

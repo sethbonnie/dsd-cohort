@@ -1,10 +1,19 @@
 import "./App.css";
 import Kitchen from "./pages/Kitchen.js";
+import logo from "./logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Kitchen />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route index element={<div>recipe screen</div>}/>
+          <Route path="/kitchen" element={<Kitchen />}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
