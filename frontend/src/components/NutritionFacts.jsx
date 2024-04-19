@@ -3,12 +3,10 @@ import nutritionData from '../data/nutrition_data.json'
 import './NutritionFacts.css';
 
 export default function NutritionFacts(props) {
+
+    let calories = 0;
+
     let sumNutrition = {
-        "Calories": {
-            "quantity": 0,
-            "unit": "kcal",
-            "dailyValue": ""
-        },
         "Total Fat": {
             "quantity": 0,
             "unit": "g",
@@ -87,7 +85,7 @@ export default function NutritionFacts(props) {
         let dataArray = parseNutritionData(recipe)
         console.log(dataArray)
         for (let i = 0; i < dataArray.length; i++) {
-            sumNutrition["Calories"]["quantity"] += Math.round(dataArray[i][0]["ENERC_KCAL"]["quantity"]);
+            calories += Math.round(dataArray[i][0]["ENERC_KCAL"]["quantity"]);
 
             sumNutrition["Total Fat"]["quantity"] += Math.round(dataArray[i][0]["FAT"]["quantity"]);
             sumNutrition["Total Fat"]["dailyValue"] += Math.round(dataArray[i][1]["FAT"]["quantity"]);
@@ -126,12 +124,13 @@ export default function NutritionFacts(props) {
     // console.log(sumNutrition)
     const keys = Object.keys(sumNutrition)
     const sumValues = Object.values(sumNutrition)
-    sumValues.forEach(object => Math.round(object["quantity"]));
     return (
 
         <div className="nutritionCard">
             <h1>Nutrition Facts</h1>
             <h3>Serving Size <p>1 shake</p></h3>
+            <div className="caloriesDiv"><h2>Calories</h2><h2>{calories}</h2></div>
+            <div className="dailyValue"><div></div><h4 >%Daily Value*</h4></div>
              <ul>
                 {keys.map((key, index) => <li key={index}><div className="listDiv"><h4>{key}</h4>{sumValues[index]["quantity"]}{sumValues[index]["unit"]}</div><p>{sumValues[index]["dailyValue"]}%</p></li>)}
             </ul>

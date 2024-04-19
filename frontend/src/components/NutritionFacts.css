@@ -1,4 +1,5 @@
 .nutritionCard {
+    position: relative;
     height: 100%;
     width: 400px;
     font-size: 12px;
@@ -18,8 +19,20 @@
     gap: 12px;
 }
 
-h1 {
+.caloriesDiv {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 3px solid #ced4da;
+}
+
+.dailyValue {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+h1 {
+    border-bottom: 1px solid #ced4da;
 }
 
 h3 {
@@ -31,6 +44,7 @@ h3 {
 
 ul {
     padding: 0;
+    margin-top: 0;
 }
 
 li {
