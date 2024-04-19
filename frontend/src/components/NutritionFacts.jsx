@@ -76,7 +76,7 @@ export default function NutritionFacts(props) {
                 };
             }
         }
-        // console.log(parsedData)
+
         const dataArray = Object.values(parsedData);
         return dataArray;
     }
@@ -119,9 +119,10 @@ export default function NutritionFacts(props) {
         }
     }
 
-    sumNutritionData("Green Machine Smoothie")
+    function handleNutritionData(recipe){
+        sumNutritionData("Green Machine Smoothie")
+    }
 
-    // console.log(sumNutrition)
     const keys = Object.keys(sumNutrition)
     const sumValues = Object.values(sumNutrition)
     return (
