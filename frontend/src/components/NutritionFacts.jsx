@@ -119,11 +119,8 @@ function sumNutritionData(recipe) {
 
 export default function NutritionFacts(props) {
     
-
-    
     const [calories, nutritionFacts] = sumNutritionData(props.recipe)
     
-
     const keys = Object.keys(nutritionFacts)
     const sumValues = Object.values(nutritionFacts)
     return (
