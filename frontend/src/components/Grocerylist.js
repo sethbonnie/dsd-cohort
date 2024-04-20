@@ -18,27 +18,38 @@ export default function Grocerylist() {
 
   const footer = (
     <>
-      <Button label="Add to Kitchen" icon="pi pi-check" />
+      <Button label="Add to My Kitchen" icon="pi pi-check" />
     </>
   );
   return (
     <header className="App-header">
       <div className="card flex justify-content-center">
-        <Card title="Grocery List" footer={footer} className="md:w-25rem">
-          <p className="m-0">
+        <Card
+          title="..................Grocery List.................."
+          footer={footer}
+          className="md:w-25rem"
+        >
+          <div className="list-item">
+            <div>Item Name</div>
+            <div>Amount</div>
+            <div>Check</div>
+          </div>
+          <div className="list-item">
+            <div>Strawberries</div>
+            <div>carton x1</div>
             <Checkbox
               onChange={(e) => setChecked(e.checked)}
               checked={checked}
             ></Checkbox>
-            Strawberries............................1 large carton
-          </p>
-          <p className="m-0">
+          </div>
+          <div className="list-item">
+            <div>Bananas</div>
+            <div>bunch x2</div>
             <Checkbox
               onChange={(e) => setChecked(e.checked)}
               checked={checked}
             ></Checkbox>
-            Bananas............................1 bunch
-          </p>
+          </div>
         </Card>
       </div>
     </header>
