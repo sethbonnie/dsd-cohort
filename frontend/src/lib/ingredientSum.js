@@ -1,5 +1,6 @@
 import nutritionData from "../data/nutrition_data.json";
 import ingredients from "../data/ingredients.json"
+import shoppingMeasures from "../data/shopping_measures.json"
 
 
 
@@ -24,10 +25,10 @@ function grabAllMainIngredients(recipeNames){
 
 const ingredientSums = grabIngredientData()
 
-function conversion(){
+function conversion(recipeNames){
     let convertedArray = []
 
-    const mainIngredients = grabAllMainIngredients(["Green Machine Smoothie", "Coffee and Cream Smoothie", "Green Machine Smoothie"])
+    const mainIngredients = grabAllMainIngredients(recipeNames)
     
     for (let i = 0; i < mainIngredients.length; i++){
         if (!ingredientSums[mainIngredients[i]]){
@@ -40,21 +41,41 @@ function conversion(){
 
 function sumConverted(converted){
     let totalQuantities = {}
-    console.log(converted)
     for (let i = 0; i < converted.length; i++){
         const ingredient = converted[i]
-        console.log(i, ingredient)
+        
         if (totalQuantities[ingredient["food"]]){
-            totalQuantities[ingredient["food"]] += ingredient["quantity"]
+            totalQuantities[ingredient["food"]]["quantity"] += ingredient["quantity"]
         }
         else{
-            totalQuantities[ingredient["food"]] = ingredient["quantity"]
+            totalQuantities[ingredient["food"]] = { quantity: ingredient["quantity"], 
+            measure: ingredient["measure"]
+            }
+
         }
     }
     return totalQuantities
 }
 
-const converted = conversion()
-const stuff = sumConverted(converted)
-console.log(stuff)
+function ingredientsToShoppingList(ingredientQuantities){
+    let shoppingList = []
+    for (let [food, ingredient] of Object.entries(ingredientQuantities)){
+        let shopping = shoppingMeasures[food]
+        let quantity = Math.ceil(ingredient.quantity/shopping.conversionRate)
+        const item = { 
+            name: food,
+            quantity: quantity,
+            ...shopping.shopping
+        }
+        shoppingList.push(item)
+    }
+    return shoppingList
+
+}
+
+const recipeNames = ["Green Machine Smoothie", "Coffee and Cream Smoothie", "Pumpkin Pie Smoothie", "Creamy Carrot Cake Smoothie","Minty Watermelon Cooler","Classic Strawberry Banana Smoothie","Tropical Green Smoothie","Chocolate Peanut Butter Protein Smoothie","Berry Blast Smoothie","Mango Madness Smoothie"]
+const converted = conversion(recipeNames)
+const ingredientQuantities = sumConverted(converted)
+const shoppingList = ingredientsToShoppingList(ingredientQuantities)
+console.log(shoppingList)
 // console.log(mainIngredients)
