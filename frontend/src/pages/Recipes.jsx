@@ -5,9 +5,13 @@ import { DndContext } from "@dnd-kit/core";
 import { Draggable } from "../components/Draggable";
 import { Droppable } from "../components/Droppable";
 import { Splitter, SplitterPanel } from "primereact/splitter";
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 import NutritionFacts from "../components/NutritionFacts";
-
+import ingredients from "../data/ingredients.json"
 import { Tooltip } from "primereact/tooltip";
+import './Recipes.css';
+
 
 function Recipes() {
   const containers = [
@@ -31,16 +35,23 @@ function Recipes() {
 
   const [isDragging, setIsDragging] = useState(false);
 
-  const smoothiesShown = [
-    {
-      id: 1,
-      text: "Minty Watermelon Cooler",
-    },
-    {
-      id: 2,
-      text: "Classic Strawberry Banana Smoothie",
-    },
-  ];
+
+  const recipes = (ingredients["ingredients by recipe"])
+  const smoothiesShown = Object.keys(recipes).map((recipe, index) => {
+      return {
+        id: index,
+        text: recipe,
+        img: recipes[recipe]["imageURL"]
+      }
+    }
+)
+
+  function Header(props) {
+    return (
+      <img src={props.src} alt={props.text} />
+    )
+  }
+
   const draggableMarkup = smoothiesShown.map((smoothie) => (
     <div>
       {!isDragging && (
@@ -48,15 +59,10 @@ function Recipes() {
           <NutritionFacts recipe={smoothie.text}></NutritionFacts>
         </Tooltip>
       )}
-      <div>
+      <div className="smoothieDiv">
         <Draggable id={smoothie.id} key={smoothie.id}>
-          <div
-            className={`drag smoothie-${smoothie.id}`}
-            data-pr-position="right"
-            data-pr-at="right+5 top"
-          >
-            {smoothie.text}
-          </div>
+          <Card title={smoothie.text} header={<Header src={smoothie.img} />} className={`smoothieCard drag smoothie-${smoothie.id}`}>
+          </Card>
         </Draggable>
       </div>
       <br></br>
@@ -68,35 +74,35 @@ function Recipes() {
       <Tooltip target=".custom-target-icon" />
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Splitter style={{ height: "300px" }}>
-          <SplitterPanel className="flex align-items-center justify-content-center">
+          <div className="recipesList">
             {draggableMarkup}
-          </SplitterPanel>
+          </div>
           <SplitterPanel className="flex align-items-center justify-content-center">
             {containers.map((id) => (
               <Droppable id={id}>
                 {days[id].length == 0
                   ? id
                   : days[id].map((recipe, i) => (
-                      <div
-                        style={{
-                          borderStyle: "solid",
-                          borderRadius: "25px",
-                          fontWeight: "bold",
-                          padding: "1px",
-                        }}
-                      >
-                        <span>{recipe} </span>
+                    <div
+                      style={{
+                        borderStyle: "solid",
+                        borderRadius: "25px",
+                        fontWeight: "bold",
+                        padding: "1px",
+                      }}
+                    >
+                      <span>{recipe} </span>
 
-                        {console.log("nutri facts:")}
-                        {console.log(recipe)}
-                        <span
-                          onClick={() => handleRemove(id, i)}
-                          style={{ color: "red" }}
-                        >
-                          (X)
-                        </span>
-                      </div>
-                    ))}
+                      {console.log("nutri facts:")}
+                      {console.log(recipe)}
+                      <span
+                        onClick={() => handleRemove(id, i)}
+                        style={{ color: "red" }}
+                      >
+                        (X)
+                      </span>
+                    </div>
+                  ))}
               </Droppable>
             ))}
           </SplitterPanel>

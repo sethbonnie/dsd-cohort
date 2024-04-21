@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { AutoComplete } from "primereact/autocomplete";
 import { InputNumber } from "primereact/inputnumber";
 import { Accordion, AccordionTab } from "primereact/accordion";
-import "primereact/resources/themes/arya-orange/theme.css";
+// import "primereact/resources/themes/arya-orange/theme.css";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
 
