@@ -4,6 +4,7 @@ import logo from "./logo.svg";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import NutritionFacts from './components/NutritionFacts';
+import ingredientSum from './lib/ingredientSum.js'
 
 function App() {
   return (
