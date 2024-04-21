@@ -68,20 +68,20 @@ function Recipes() {
 
   return (
     <div>
-      <Tooltip target=".custom-target-icon" />
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Splitter style={{ height: "300px" }}>
           <div className="recipesList">{draggableMarkup}</div>
           <div>
-            {containers.map((id) => (
+            {containers.map((day) => (
               <div>
-                <h4>{id}</h4>
-                <Droppable id={id}>
-                  {days[id].map((smoothie, i) => (
+                <h4>{day}</h4>
+                <Droppable id={day}>
+                  {days[day].map((smoothie, i) => (
                     <Card
                       title={smoothie.text}
                       header={<Header src={smoothie.img} />}
                       className={`smoothieCard drag smoothie-${smoothie.id}`}
+                      onClick={() => handleRemove(day, i)}
                     ></Card>
                   ))}
                 </Droppable>
@@ -98,6 +98,8 @@ function Recipes() {
       ...days,
       [day]: days[day].filter((v, i) => index != i),
     });
+    setIsDragging(true);
+    setTimeout(() => setIsDragging(false), 100);
   }
 
   function handleDragStart() {
