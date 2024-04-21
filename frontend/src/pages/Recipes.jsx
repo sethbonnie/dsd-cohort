@@ -5,13 +5,11 @@ import { DndContext } from "@dnd-kit/core";
 import { Draggable } from "../components/Draggable";
 import { Droppable } from "../components/Droppable";
 import { Splitter, SplitterPanel } from "primereact/splitter";
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
+import { Card } from "primereact/card";
 import NutritionFacts from "../components/NutritionFacts";
-import ingredients from "../data/ingredients.json"
+import ingredients from "../data/ingredients.json";
 import { Tooltip } from "primereact/tooltip";
-import './Recipes.css';
-
+import "./Recipes.css";
 
 function Recipes() {
   const containers = [
@@ -35,24 +33,20 @@ function Recipes() {
 
   const [isDragging, setIsDragging] = useState(false);
 
-
-  const recipes = (ingredients["ingredients by recipe"])
-  const smoothiesShown = Object.keys(recipes).map((recipe, index) => {
-      return {
-        id: index,
-        text: recipe,
-        img: recipes[recipe]["imageURL"]
-      }
-    }
-)
+  const recipes = ingredients["ingredients by recipe"];
+  const smoothies = Object.keys(recipes).map((recipe, index) => {
+    return {
+      id: index,
+      text: recipe,
+      img: recipes[recipe]["imageURL"],
+    };
+  });
 
   function Header(props) {
-    return (
-      <img src={props.src} alt={props.text} />
-    )
+    return <img src={props.src} alt={props.text} />;
   }
 
-  const draggableMarkup = smoothiesShown.map((smoothie) => (
+  const draggableMarkup = smoothies.map((smoothie) => (
     <div>
       {!isDragging && (
         <Tooltip target={`.smoothie-${smoothie.id}`}>
@@ -61,8 +55,11 @@ function Recipes() {
       )}
       <div className="smoothieDiv">
         <Draggable id={smoothie.id} key={smoothie.id}>
-          <Card title={smoothie.text} header={<Header src={smoothie.img} />} className={`smoothieCard drag smoothie-${smoothie.id}`}>
-          </Card>
+          <Card
+            title={smoothie.text}
+            header={<Header src={smoothie.img} />}
+            className={`smoothieCard drag smoothie-${smoothie.id}`}
+          ></Card>
         </Draggable>
       </div>
       <br></br>
@@ -74,38 +71,23 @@ function Recipes() {
       <Tooltip target=".custom-target-icon" />
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Splitter style={{ height: "300px" }}>
-          <div className="recipesList">
-            {draggableMarkup}
-          </div>
-          <SplitterPanel className="flex align-items-center justify-content-center">
+          <div className="recipesList">{draggableMarkup}</div>
+          <div>
             {containers.map((id) => (
-              <Droppable id={id}>
-                {days[id].length == 0
-                  ? id
-                  : days[id].map((recipe, i) => (
-                    <div
-                      style={{
-                        borderStyle: "solid",
-                        borderRadius: "25px",
-                        fontWeight: "bold",
-                        padding: "1px",
-                      }}
-                    >
-                      <span>{recipe} </span>
-
-                      {console.log("nutri facts:")}
-                      {console.log(recipe)}
-                      <span
-                        onClick={() => handleRemove(id, i)}
-                        style={{ color: "red" }}
-                      >
-                        (X)
-                      </span>
-                    </div>
+              <div>
+                <h4>{id}</h4>
+                <Droppable id={id}>
+                  {days[id].map((smoothie, i) => (
+                    <Card
+                      title={smoothie.text}
+                      header={<Header src={smoothie.img} />}
+                      className={`smoothieCard drag smoothie-${smoothie.id}`}
+                    ></Card>
                   ))}
-              </Droppable>
+                </Droppable>
+              </div>
             ))}
-          </SplitterPanel>
+          </div>
         </Splitter>
       </DndContext>
     </div>
@@ -126,15 +108,13 @@ function Recipes() {
     const { over } = event;
 
     if (over) {
-      const activeRecipe = smoothiesShown.find(
-        ({ id }) => id == event.active.id
-      );
+      const activeRecipe = smoothies.find(({ id }) => id == event.active.id);
 
       if (activeRecipe) {
         const day = over.id;
         setDays({
           ...days,
-          [day]: [...days[day], activeRecipe.text], //immutable
+          [day]: [...days[day], activeRecipe], //immutable
         });
       }
     }
