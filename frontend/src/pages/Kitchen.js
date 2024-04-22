@@ -138,7 +138,7 @@ export default function Kitchen() {
   };
 
   const search_size = (event) => {
-    let _size = ["small", "medium", "large"];
+    let _size = ["gallon", "cup", "bag", "jar"];
     setSizes(
       event.query ? [...Array().keys()].map((size) => event.query) : _size
     );
@@ -152,6 +152,7 @@ export default function Kitchen() {
       name: selectedItem,
       quantity: value2,
       item: "",
+      size: svalue,
       category: cvalue
     })
   }
@@ -188,7 +189,7 @@ export default function Kitchen() {
             ></Column>
             <Column
               field="size"
-              header="Size"
+              header="Item"
               sortable
               style={{ width: "10%" }}
             ></Column>
@@ -220,11 +221,11 @@ export default function Kitchen() {
               <AutoComplete
                 value={selectedItem}
                 onChange={(e) => setSelectedItem(e.value)}
-                suggestions={filteredItems}
-                completeMethod={search}
+                //suggestions={filteredItems}
+                //completeMethod={search}
                 field="label"
-                optionGroupLabel="label"
-                optionGroupChildren="items"
+                //optionGroupLabel="label"
+                //optionGroupChildren="items"
                 placeholder="enter item name"
               />
 
