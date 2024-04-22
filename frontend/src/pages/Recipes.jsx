@@ -24,7 +24,7 @@ function Recipes({
   const draggableMarkup = smoothies.map((smoothie) => (
     <div>
       {!isDragging && (
-        <Tooltip target={`.smoothie-${smoothie.id}`}>
+        <Tooltip target={`.smoothie-${smoothie.id}`} mouseTrack mouseTrackTop={170}>
           <NutritionFacts recipe={smoothie.text}></NutritionFacts>
         </Tooltip>
       )}
