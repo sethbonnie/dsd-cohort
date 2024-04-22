@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Recipes from "./pages/Recipes.jsx";
 import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
+import ingredientSum from './lib/ingredientSum.js'
 
 const recipes = ingredients["ingredients by recipe"];
 

@@ -8,7 +8,7 @@
         "1 shot espresso",
         "1/2 cup yogurt",
         "1/2 cup canned pumpkin puree",
-        " 1/2 teaspoon ground cinnamon",
+        "1/2 teaspoon ground cinnamon",
         "1/4 teaspoon ground nutmeg",
         "pinch of ground ginger",
         "1 medium carrot",
@@ -18,7 +18,7 @@
         "1 squeeze of lime juice",
         "1 cup coconut water",
         "2 cups frozen strawberries",
-        "1 cup frozen mango chuncks",
+        "1 cup frozen mango chunks",
         "1/2 cup pineapple chunks",
         "1 scoop chocolate protein powder",
         "1 tablespoon peanut butter",
@@ -31,7 +31,7 @@
                 "1 handful spinach",
                 "1 handful kale",
                 "1/2 avocado",
-                "1 banana",
+                "1/4 cup banana",
                 "1 cup milk"
             ],
             "optional": [
@@ -44,10 +44,10 @@
         "Coffee and Cream": {
             "main": [
                 "1 shot espresso",
-                "1 banana",
+                "1/4 cup banana",
                 "1/2 cup yogurt",
                 "1/2 cup milk",
-                "1/4 ground cinnamon"
+                "1/2 teaspoon ground cinnamon"
             ],
             "optional": [],
             "imageURL": "/img/coffee-and-cream.jpg"
@@ -55,7 +55,7 @@
         "Pumpkin Pie": {
             "main": [
                 "1/2 cup canned pumpkin puree",
-                "1 banana",
+                "1/4 cup banana",
                 "1/2 cup milk",
                 "1/2 teaspoon ground cinnamon",
                 "1/4 teaspoon ground nutmeg",
@@ -69,7 +69,7 @@
         "Creamy Carrot Cake": {
             "main": [
                 "1 medium carrot",
-                "1 banana",
+                "1/4 cup banana",
                 "1/2 cup milk",
                 "1/2 teaspoon ground cinnamon",
                 "1/4 teaspoon ground nutmeg"
@@ -93,7 +93,7 @@
         "Classic Strawberry Banana": {
             "main": [
                 "2 cups frozen strawberries",
-                "1 banana",
+                "1/4 cup banana",
                 "1/2 cup milk"
             ],
             "optional": [
@@ -107,7 +107,7 @@
             "main": [
                 "1 cup frozen mango chunks",
                 "1/2 cup pineapple chunks",
-                "1 banana",
+                "1/4 cup banana",
                 "1 handful spinach",
                 "1 cup coconut water"
 
@@ -123,7 +123,7 @@
                 "1 scoop chocolate protein powder",
                 "1/2 cup milk",
                 "1 tablespoon peanut butter",
-                "1 banana"
+                "1/4 cup banana"
             ],
             "optional": [
                 "1 tablespoon cocoa powder",
@@ -147,7 +147,7 @@
         "Mango Madness": {
             "main": [
                 "1 cup frozen mango chunks",
-                "1/2 banana",
+                "1/4 cup banana",
                 "1/2 cup pineapple chunks",
                 "1 cup coconut water"
             ],
