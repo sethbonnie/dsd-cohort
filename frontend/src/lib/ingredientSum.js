@@ -73,9 +73,8 @@ function ingredientsToShoppingList(ingredientQuantities){
 
 }
 
-const recipeNames = ["Green Machine Smoothie", "Coffee and Cream Smoothie", "Pumpkin Pie Smoothie", "Creamy Carrot Cake Smoothie","Minty Watermelon Cooler","Classic Strawberry Banana Smoothie","Tropical Green Smoothie","Chocolate Peanut Butter Protein Smoothie","Berry Blast Smoothie","Mango Madness Smoothie"]
+const recipeNames = ["Green Machine", "Coffee and Cream", "Pumpkin Pie", "Creamy Carrot Cake","Minty Watermelon Cooler","Classic Strawberry Banana","Tropical Green","Chocolate Peanut Butter Protein","Berry Blast","Mango Madness"]
 const converted = conversion(recipeNames)
 const ingredientQuantities = sumConverted(converted)
 const shoppingList = ingredientsToShoppingList(ingredientQuantities)
 console.log(shoppingList)
-// console.log(mainIngredients)

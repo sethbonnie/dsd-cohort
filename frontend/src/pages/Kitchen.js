@@ -10,112 +10,12 @@ import "./kitchen.css";
 import "primeicons/primeicons.css";
 
 export default function Kitchen() {
+  const [addedIngredient, setAddedIngredient] = useState({
+  
+  })
+  console.log(addedIngredient)
   const [products, setProducts] = useState([
-    {
-      name: "Strawberries",
-      category: "fruit",
-      size: "small carton",
-      quantity: 34,
-      servings: 1,
-    },
-    {
-      name: "Bananas",
-      category: "fruit",
-      size: "medium",
-      quantity: 14,
-      servings: 1,
-    },
-    {
-      name: "1Carrot",
-      category: "vegetable",
-      size: "medium",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "9Spinach",
-      category: "greens",
-      size: "bunch",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Kale",
-      category: "greens",
-      size: "bunch",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "0Avocado",
-      category: "vegetable",
-      size: "medium",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Honey",
-      category: "sweetener",
-      size: "16oz bottle",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Greek yogurt",
-      category: "dairy",
-      size: "16oz tub",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Espresso",
-      category: "flavoring",
-      size: "2oz can",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Whipped Cream",
-      category: "dairy",
-      size: "160oz tub",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Cinnamon",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Milk",
-      category: "dairy",
-      size: "half-gallon",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Nutmeg",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Ginger",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Sugar",
-      category: "sweetener",
-      size: "2lb bag",
-      quantity: 3,
-      servings: 1,
-    },
+    
   ]);
 
   const onQuantityChange = (rowData, event) => {
@@ -137,6 +37,7 @@ export default function Kitchen() {
     });
     setProducts(updatedProducts);
   };
+  
 
   const quantityEditor = (rowData) => {
     return (
@@ -245,6 +146,17 @@ export default function Kitchen() {
 
   const [value2, setValue2] = useState();
 
+  useEffect(()=>{
+
+    setAddedIngredient({
+      name: selectedItem,
+      quantity: value2,
+      item: "",
+      category: cvalue
+    })
+  }
+  ) 
+
   return (
     <div className="App">
       <header className="App-header">
@@ -348,7 +260,7 @@ export default function Kitchen() {
               <br></br>
               <br></br>
 
-              <Button label="Add Item" icon="pi pi-list" />
+              <Button label="Add Item" icon="pi pi-list" onClick={()=>setProducts([...products,addedIngredient])} />
             </AccordionTab>
           </Accordion>
         </div>
