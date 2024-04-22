@@ -26,7 +26,7 @@
         "1/4 cup banana"
     ],
     "ingredients by recipe": {
-        "Green Machine Smoothie": {
+        "Green Machine": {
             "main": [
                 "1 handful spinach",
                 "1 handful kale",
@@ -41,7 +41,7 @@
 
             "imageURL" : "/img/green-machine.jpg"
         },
-        "Coffee and Cream Smoothie": {
+        "Coffee and Cream": {
             "main": [
                 "1 shot espresso",
                 "1 banana",
@@ -52,7 +52,7 @@
             "optional": [],
             "imageURL": "/img/coffee-and-cream.jpg"
         },
-        "Pumpkin Pie Smoothie": {
+        "Pumpkin Pie": {
             "main": [
                 "1/2 cup canned pumpkin puree",
                 "1 banana",
@@ -66,7 +66,7 @@
             ],
             "imageURL": "/img/pumpkin-pie.jpg"
         },
-        "Creamy Carrot Cake Smoothie": {
+        "Creamy Carrot Cake": {
             "main": [
                 "1 medium carrot",
                 "1 banana",
@@ -90,7 +90,7 @@
             "optional": [],
             "imageURL": "/img/minty-watermelon.jpg"
         },
-        "Classic Strawberry Banana Smoothie": {
+        "Classic Strawberry Banana": {
             "main": [
                 "2 cups frozen strawberries",
                 "1 banana",
@@ -103,7 +103,7 @@
             ],
             "imageURL": "/img/strawberry-banana.jpg"
         },
-        "Tropical Green Smoothie": {
+        "Tropical Green": {
             "main": [
                 "1 cup frozen mango chunks",
                 "1/2 cup pineapple chunks",
@@ -118,7 +118,7 @@
             ],
             "imageURL": "/img/tropical-green.jpg"
         },
-        "Chocolate Peanut Butter Protein Smoothie": {
+        "Chocolate Peanut Butter Protein": {
             "main": [
                 "1 scoop chocolate protein powder",
                 "1/2 cup milk",
@@ -131,7 +131,7 @@
             ],
             "imageURL": "/img/chocolate-peanut-butter.jpg"
         },
-        "Berry Blast Smoothie": {
+        "Berry Blast": {
             "main": [
                 "1 cup mixed frozen berries",
                 "1/2 cup yogurt",
@@ -144,7 +144,7 @@
             ],
             "imageURL": "/img/berry-blast.jpg"
         },
-        "Mango Madness Smoothie": {
+        "Mango Madness": {
             "main": [
                 "1 cup frozen mango chunks",
                 "1/2 banana",

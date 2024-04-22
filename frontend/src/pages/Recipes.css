@@ -1,0 +1,21 @@
+.smoothieDiv {
+    border: none;
+    
+
+}
+
+.smoothieCard {
+    margin: 12px;
+    height: 150px;
+    box-shadow: 0px 05px 12px #444;
+    border-radius: 5px;
+    width: 100px;
+    font-size: 12px;
+}
+
+.recipesList {
+    display: flex;
+    justify-content: start;
+    width: 500px;
+    flex-flow: row wrap;
+}
