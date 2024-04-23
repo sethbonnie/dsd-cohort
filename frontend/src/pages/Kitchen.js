@@ -10,13 +10,9 @@ import "./kitchen.css";
 import "primeicons/primeicons.css";
 
 export default function Kitchen() {
-  const [addedIngredient, setAddedIngredient] = useState({
-  
-  })
-  console.log(addedIngredient)
-  const [products, setProducts] = useState([
-    
-  ]);
+  const [addedIngredient, setAddedIngredient] = useState({});
+  // console.log(addedIngredient);
+  const [products, setProducts] = useState([]);
 
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
@@ -37,7 +33,6 @@ export default function Kitchen() {
     });
     setProducts(updatedProducts);
   };
-  
 
   const quantityEditor = (rowData) => {
     return (
@@ -146,17 +141,15 @@ export default function Kitchen() {
 
   const [value2, setValue2] = useState();
 
-  useEffect(()=>{
-
+  useEffect(() => {
     setAddedIngredient({
       name: selectedItem,
       quantity: value2,
       item: "",
       size: svalue,
-      category: cvalue
-    })
-  }
-  ) 
+      category: cvalue,
+    });
+  });
 
   return (
     <div className="App">
@@ -261,7 +254,11 @@ export default function Kitchen() {
               <br></br>
               <br></br>
 
-              <Button label="Add Item" icon="pi pi-list" onClick={()=>setProducts([...products,addedIngredient])} />
+              <Button
+                label="Add Item"
+                icon="pi pi-list"
+                onClick={() => setProducts([...products, addedIngredient])}
+              />
             </AccordionTab>
           </Accordion>
         </div>
