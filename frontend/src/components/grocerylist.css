@@ -1,7 +1,7 @@
 .list-item {
   display: flex;
-  justify-content: space-between;
-
+  gap: 8px;
+  font-weight: bold;
   /* Optional: Add padding or other styling as needed */
 }
 

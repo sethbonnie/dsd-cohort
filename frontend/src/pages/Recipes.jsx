@@ -47,7 +47,7 @@ function Recipes({
   function handleSubmitRecipes(){
 // console.log(weeklySmoothies)
     let test = handleRecipeConversion(weeklySmoothies)
-    console.log(weeklySmoothies)
+    // console.log(weeklySmoothies)
   }
 
   return (
