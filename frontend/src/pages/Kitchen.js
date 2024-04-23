@@ -8,116 +8,17 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 // import "primereact/resources/themes/arya-orange/theme.css";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
+import handleRecipeConversion from "../lib/ingredientSum";
 
-export default function Kitchen() {
-  const [products, setProducts] = useState([
-    {
-      name: "Strawberries",
-      category: "fruit",
-      size: "small carton",
-      quantity: 34,
-      servings: 1,
-    },
-    {
-      name: "Bananas",
-      category: "fruit",
-      size: "medium",
-      quantity: 14,
-      servings: 1,
-    },
-    {
-      name: "1Carrot",
-      category: "vegetable",
-      size: "medium",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "9Spinach",
-      category: "greens",
-      size: "bunch",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Kale",
-      category: "greens",
-      size: "bunch",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "0Avocado",
-      category: "vegetable",
-      size: "medium",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Honey",
-      category: "sweetener",
-      size: "16oz bottle",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Greek yogurt",
-      category: "dairy",
-      size: "16oz tub",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Espresso",
-      category: "flavoring",
-      size: "2oz can",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Whipped Cream",
-      category: "dairy",
-      size: "160oz tub",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Cinnamon",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Milk",
-      category: "dairy",
-      size: "half-gallon",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Nutmeg",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Ginger",
-      category: "spice",
-      size: "2oz shaker",
-      quantity: 67,
-      servings: 1,
-    },
-    {
-      name: "Sugar",
-      category: "sweetener",
-      size: "2lb bag",
-      quantity: 3,
-      servings: 1,
-    },
-  ]);
+export default function Kitchen(props) {
+  const [addedIngredient, setAddedIngredient] = useState({});
 
+  console.log(addedIngredient);
+  const [products, setProducts] = useState([]);
+  const [shoppingList] = useState(
+    handleRecipeConversion(props.weeklySmoothies)
+  );
+  console.log(shoppingList);
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
       if (product.name === rowData.name) {
@@ -237,13 +138,23 @@ export default function Kitchen() {
   };
 
   const search_size = (event) => {
-    let _size = ["small", "medium", "large"];
+    let _size = ["gallon", "cup", "bag", "jar"];
     setSizes(
       event.query ? [...Array().keys()].map((size) => event.query) : _size
     );
   };
 
   const [value2, setValue2] = useState();
+
+  useEffect(() => {
+    setAddedIngredient({
+      name: selectedItem,
+      quantity: value2,
+      item: "",
+      size: svalue,
+      category: cvalue,
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -276,7 +187,7 @@ export default function Kitchen() {
             ></Column>
             <Column
               field="size"
-              header="Size"
+              header="Item"
               sortable
               style={{ width: "10%" }}
             ></Column>
@@ -308,11 +219,11 @@ export default function Kitchen() {
               <AutoComplete
                 value={selectedItem}
                 onChange={(e) => setSelectedItem(e.value)}
-                suggestions={filteredItems}
-                completeMethod={search}
+                //suggestions={filteredItems}
+                //completeMethod={search}
                 field="label"
-                optionGroupLabel="label"
-                optionGroupChildren="items"
+                //optionGroupLabel="label"
+                //optionGroupChildren="items"
                 placeholder="enter item name"
               />
 
@@ -348,7 +259,11 @@ export default function Kitchen() {
               <br></br>
               <br></br>
 
-              <Button label="Add Item" icon="pi pi-list" />
+              <Button
+                label="Add Item"
+                icon="pi pi-list"
+                onClick={() => setProducts([...products, addedIngredient])}
+              />
             </AccordionTab>
           </Accordion>
         </div>

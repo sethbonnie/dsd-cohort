@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Recipes from "./pages/Recipes.jsx";
 import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
-import ingredientSum from './lib/ingredientSum.js'
+import ingredientSum from "./lib/ingredientSum.js";
 
 const recipes = ingredients["ingredients by recipe"];
 
@@ -21,7 +21,10 @@ function App() {
     Saturday: [],
     Sunday: [],
   });
+
+  const [weeklySmoothies, setWeeklySmoothies] = useState([]); //weeklySmoothies is an array and setWeeklySmoothies places smoothies into this array
   const [isDragging, setIsDragging] = useState(false);
+
   const smoothies = Object.keys(recipes).map((recipe, index) => {
     return {
       id: index,
@@ -36,15 +39,16 @@ function App() {
     handleDragStart,
     handleDragEnd,
     smoothies,
+    weeklySmoothies,
   };
-
+  const kitchenProps = { weeklySmoothies };
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route index element={<Recipes {...recipeProps} />} />
-          <Route path="/kitchen" element={<Kitchen />} />
+          <Route path="/kitchen" element={<Kitchen {...kitchenProps} />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -62,6 +66,7 @@ function App() {
   function handleDragStart() {
     setIsDragging(true);
   }
+
   function handleDragEnd(event) {
     setIsDragging(false);
     const { over } = event;
@@ -71,6 +76,8 @@ function App() {
 
       if (activeRecipe) {
         const day = over.id;
+        setWeeklySmoothies([...weeklySmoothies, activeRecipe.text]);
+
         setDays({
           ...days,
           [day]: [...days[day], activeRecipe], //immutable
