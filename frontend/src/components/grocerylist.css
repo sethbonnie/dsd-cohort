@@ -1,0 +1,19 @@
+.list-item {
+    display: flex;
+    justify-content: space-between;
+  
+    /* Optional: Add padding or other styling as needed */
+  }
+  
+  .grocery-list-container {
+    margin-top: 100px;
+  }
+  
+  /* Button {
+    background-color: green;
+    border: none;
+  } */
+  
+  /* .p-button {
+      border: none
+  } */

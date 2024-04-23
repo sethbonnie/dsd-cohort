@@ -9,11 +9,11 @@
   width: 50px;
 }
 
-.App {
+.kitchen-container {
   text-align: center;
 }
 
-.App-logo {
+.datatable-container {
   height: 40vmin;
   pointer-events: none;
 }

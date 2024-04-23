@@ -1,6 +1,5 @@
 import "../App.css";
 import { DndContext } from "@dnd-kit/core";
-
 import { Draggable } from "../components/Draggable";
 import { Droppable } from "../components/Droppable";
 import { Splitter, SplitterPanel } from "primereact/splitter";
@@ -8,6 +7,8 @@ import { Card } from "primereact/card";
 import NutritionFacts from "../components/NutritionFacts";
 import { Tooltip } from "primereact/tooltip";
 import "./Recipes.css";
+import { useState } from "react";
+import handleRecipeConversion from "../lib/ingredientSum";
 
 function Recipes({
   days,
@@ -16,7 +17,9 @@ function Recipes({
   handleDragStart,
   handleDragEnd,
   smoothies,
+  weeklySmoothies
 }) {
+
   function Header(props) {
     return <img src={props.src} alt={props.text} />;
   }
@@ -41,12 +44,19 @@ function Recipes({
     </div>
   ));
 
+  function handleSubmitRecipes(){
+// console.log(weeklySmoothies)
+    let test = handleRecipeConversion(weeklySmoothies)
+    console.log(weeklySmoothies)
+  }
+
   return (
     <div>
       <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <Splitter style={{ height: "300px" }}>
           <div className="recipesList">{draggableMarkup}</div>
           <div>
+            <button onClick={handleSubmitRecipes}>Submit Recipes</button>
             {Object.keys(days).map((day) => (
               <div>
                 <h4>{day}</h4>
