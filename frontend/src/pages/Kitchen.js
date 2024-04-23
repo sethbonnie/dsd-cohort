@@ -14,9 +14,7 @@ export default function Kitchen() {
   
   })
   console.log(addedIngredient)
-  const [products, setProducts] = useState([
-    
-  ]);
+  const [products, setProducts] = useState([]);
 
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
