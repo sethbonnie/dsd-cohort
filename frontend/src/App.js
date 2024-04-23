@@ -9,6 +9,7 @@ import Recipes from "./pages/Recipes.jsx";
 import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
 import ingredientSum from "./lib/ingredientSum.js";
+import { sendShoppingList } from "./lib/ingredientSum";
 
 const recipes = ingredients["ingredients by recipe"];
 

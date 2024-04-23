@@ -16,10 +16,12 @@ export default function Kitchen(props) {
 
   console.log(addedIngredient);
   const [products, setProducts] = useState([]);
-  const [shoppingList] = useState(
-    handleRecipeConversion(props.weeklySmoothies)
+
+  const [shoppingList, setShoppingList] = useState(
+    handleRecipeConversion(props.weeklySmoothies, products)
   );
-  console.log(shoppingList);
+
+  // console.log("stuff", shoppingList);
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
       if (product.name === rowData.name) {
@@ -155,7 +157,13 @@ export default function Kitchen(props) {
       size: svalue,
       category: cvalue,
     });
-  });
+  }, [selectedItem, cvalue, svalue, value2]);
+
+  function handleAddItem(){
+    const newProducts = [...products, addedIngredient]
+    setProducts(newProducts)
+    setShoppingList(handleRecipeConversion(props.weeklySmoothies, newProducts))
+  }
 
   return (
     <div className="kitchen-container">
@@ -263,13 +271,13 @@ export default function Kitchen(props) {
               <Button
                 label="Add Item"
                 icon="pi pi-list"
-                onClick={() => setProducts([...products, addedIngredient])}
+                onClick={() => handleAddItem()}
               />
             </AccordionTab>
           </Accordion>
         </div>
       </header>
-      <Grocerylist />
+      <Grocerylist shoppingList={shoppingList} />
     </div>
   );
 }

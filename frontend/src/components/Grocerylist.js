@@ -4,17 +4,11 @@ import { DataTable } from "primereact/datatable";
 import React, { useState, useEffect } from "react";
 import { Card } from "primereact/card";
 import { Button } from "primereact/button";
-import { Checkbox } from "primereact/checkbox";
 
-export default function Grocerylist() {
-  const [list, setList] = useState([
-    {
-      name: "Strawberries",
-      amount: 34,
-    },
-  ]);
 
-  const [checked, setChecked] = useState(false);
+export default function Grocerylist(props) {
+  // console.log("shopping list from props", props.shoppingList)
+  const shoppingList = props.shoppingList
 
   const footer = (
     <>
@@ -29,26 +23,14 @@ export default function Grocerylist() {
         className="md:w-25rem"
       >
         <div className="list-item">
-          <div>Item Name</div>
           <div>Amount</div>
-          <div>Check</div>
+          <div>Item Name</div>
         </div>
-        <div className="list-item">
-          <div>Strawberries</div>
-          <div>carton x1</div>
-          <Checkbox
-            onChange={(e) => setChecked(e.checked)}
-            checked={checked}
-          ></Checkbox>
-        </div>
-        <div className="list-item">
-          <div>Bananas</div>
-          <div>bunch x2</div>
-          <Checkbox
-            onChange={(e) => setChecked(e.checked)}
-            checked={checked}
-          ></Checkbox>
-        </div>
+        <ul>
+       { shoppingList.map((item) => {
+          return <li>{item.quantity} {item.item} {item.name} <input type="checkbox"></input></li> 
+        })}
+        </ul>
       </Card>
     </div>
   );
