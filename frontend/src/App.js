@@ -4,6 +4,7 @@ import logo from "./logo.svg";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Grocerylist from "./components/Grocerylist.js";
 import Recipes from "./pages/Recipes.jsx";
 import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
@@ -46,6 +47,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+        {/* <Grocerylist /> */}
         <Routes>
           <Route index element={<Recipes {...recipeProps} />} />
           <Route path="/kitchen" element={<Kitchen {...kitchenProps} />} />
