@@ -8,12 +8,17 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 // import "primereact/resources/themes/arya-orange/theme.css";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
+import handleRecipeConversion from "../lib/ingredientSum";
 
-export default function Kitchen() {
+export default function Kitchen(props) {
   const [addedIngredient, setAddedIngredient] = useState({});
-  // console.log(addedIngredient);
-  const [products, setProducts] = useState([]);
 
+  console.log(addedIngredient);
+  const [products, setProducts] = useState([]);
+  const [shoppingList] = useState(
+    handleRecipeConversion(props.weeklySmoothies)
+  );
+  console.log(shoppingList);
   const onQuantityChange = (rowData, event) => {
     const updatedProducts = products.map((product) => {
       if (product.name === rowData.name) {
@@ -149,7 +154,7 @@ export default function Kitchen() {
       size: svalue,
       category: cvalue,
     });
-  });
+  }, []);
 
   return (
     <div className="App">

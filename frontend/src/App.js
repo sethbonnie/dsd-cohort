@@ -23,8 +23,8 @@ function App() {
   });
 
   const [weeklySmoothies, setWeeklySmoothies] = useState([]); //weeklySmoothies is an array and setWeeklySmoothies places smoothies into this array
-
   const [isDragging, setIsDragging] = useState(false);
+
   const smoothies = Object.keys(recipes).map((recipe, index) => {
     return {
       id: index,
@@ -41,14 +41,14 @@ function App() {
     smoothies,
     weeklySmoothies,
   };
-
+  const kitchenProps = { weeklySmoothies };
   return (
     <div className="App">
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route index element={<Recipes {...recipeProps} />} />
-          <Route path="/kitchen" element={<Kitchen />} />
+          <Route path="/kitchen" element={<Kitchen {...kitchenProps} />} />
         </Routes>
       </BrowserRouter>
     </div>

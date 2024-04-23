@@ -91,6 +91,5 @@ export default function handleRecipeConversion(recipes) {
   const converted = conversion(recipes);
   const ingredientQuantities = sumConverted(converted);
   const shoppingList = ingredientsToShoppingList(ingredientQuantities);
-  console.log("shopping list", shoppingList);
-  return "hi it worked";
+  return shoppingList;
 }
