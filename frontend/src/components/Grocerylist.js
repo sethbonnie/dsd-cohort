@@ -22,36 +22,34 @@ export default function Grocerylist() {
     </>
   );
   return (
-    <header className="App-header">
-      <div className="card flex justify-content-center">
-        <Card
-          title="..................Grocery List.................."
-          footer={footer}
-          className="md:w-25rem"
-        >
-          <div className="list-item">
-            <div>Item Name</div>
-            <div>Amount</div>
-            <div>Check</div>
-          </div>
-          <div className="list-item">
-            <div>Strawberries</div>
-            <div>carton x1</div>
-            <Checkbox
-              onChange={(e) => setChecked(e.checked)}
-              checked={checked}
-            ></Checkbox>
-          </div>
-          <div className="list-item">
-            <div>Bananas</div>
-            <div>bunch x2</div>
-            <Checkbox
-              onChange={(e) => setChecked(e.checked)}
-              checked={checked}
-            ></Checkbox>
-          </div>
-        </Card>
-      </div>
-    </header>
+    <div className="grocery-list-container">
+      <Card
+        title="..................Grocery List.................."
+        footer={footer}
+        className="md:w-25rem"
+      >
+        <div className="list-item">
+          <div>Item Name</div>
+          <div>Amount</div>
+          <div>Check</div>
+        </div>
+        <div className="list-item">
+          <div>Strawberries</div>
+          <div>carton x1</div>
+          <Checkbox
+            onChange={(e) => setChecked(e.checked)}
+            checked={checked}
+          ></Checkbox>
+        </div>
+        <div className="list-item">
+          <div>Bananas</div>
+          <div>bunch x2</div>
+          <Checkbox
+            onChange={(e) => setChecked(e.checked)}
+            checked={checked}
+          ></Checkbox>
+        </div>
+      </Card>
+    </div>
   );
 }

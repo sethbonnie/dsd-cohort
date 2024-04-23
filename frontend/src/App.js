@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
-        <Grocerylist />
+        {/* <Grocerylist /> */}
         <Routes>
           <Route index element={<div>recipe screen</div>} />
           <Route path="/kitchen" element={<Kitchen />} />

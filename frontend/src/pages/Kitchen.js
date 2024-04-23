@@ -8,6 +8,7 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 import "primereact/resources/themes/arya-orange/theme.css";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
+import Grocerylist from "../components/Grocerylist";
 
 export default function Kitchen() {
   const [products, setProducts] = useState([
@@ -246,8 +247,8 @@ export default function Kitchen() {
   const [value2, setValue2] = useState();
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="kitchen-container">
+      <header className="datatable-container">
         <a>
           <Button label="My Kitchen" />
         </a>
@@ -353,6 +354,7 @@ export default function Kitchen() {
           </Accordion>
         </div>
       </header>
+      <Grocerylist />
     </div>
   );
 }
