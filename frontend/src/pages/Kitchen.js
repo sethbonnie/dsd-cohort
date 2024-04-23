@@ -155,7 +155,7 @@ export default function Kitchen(props) {
       size: svalue,
       category: cvalue,
     });
-  }, []);
+  });
 
   return (
     <div className="kitchen-container">
