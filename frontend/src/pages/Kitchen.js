@@ -20,6 +20,9 @@ export default function Kitchen(props) {
   const [shoppingList, setShoppingList] = useState(
     handleRecipeConversion(props.weeklySmoothies, products)
   );
+  function CallBack(child) {
+    return <div>message from child {child}</div>;
+  }
 
   // console.log("stuff", shoppingList);
   const onQuantityChange = (rowData, event) => {
@@ -159,10 +162,10 @@ export default function Kitchen(props) {
     });
   }, [selectedItem, cvalue, svalue, value2]);
 
-  function handleAddItem(){
-    const newProducts = [...products, addedIngredient]
-    setProducts(newProducts)
-    setShoppingList(handleRecipeConversion(props.weeklySmoothies, newProducts))
+  function handleAddItem() {
+    const newProducts = [...products, addedIngredient];
+    setProducts(newProducts);
+    setShoppingList(handleRecipeConversion(props.weeklySmoothies, newProducts));
   }
 
   return (
@@ -277,7 +280,7 @@ export default function Kitchen(props) {
           </Accordion>
         </div>
       </header>
-      <Grocerylist shoppingList={shoppingList} />
+      <Grocerylist handleCallback={CallBack} shoppingList={shoppingList} />
     </div>
   );
 }

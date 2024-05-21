@@ -62,37 +62,40 @@ function ingredientsToShoppingList(ingredientQuantities, products) {
   let shoppingList = [];
   for (let [food, ingredient] of Object.entries(ingredientQuantities)) {
     let shopping = shoppingMeasures[food];
-    let product = products.find(product => product.name === food);
+    let product = products.find((product) => product.name === food);
 
     let productQuantity = product ? product.quantity : 0;
-    let quantity = Math.ceil((ingredient.quantity - productQuantity) / shopping.conversionRate);
-    if (quantity > 0) 
-    {const item = {
-      name: food,
-      quantity: quantity < 0 ? 0 : quantity,
-      ...shopping.shopping,
-    };
-    shoppingList.push(item);}
+    let quantity = Math.ceil(
+      (ingredient.quantity - productQuantity) / shopping.conversionRate
+    );
+    if (quantity > 0) {
+      const item = {
+        name: food,
+        quantity: quantity < 0 ? 0 : quantity,
+        ...shopping.shopping,
+      };
+      shoppingList.push(item);
+    }
   }
   return shoppingList;
 }
 
-let updatedShoppingList = []
+let updatedShoppingList = [];
 
 export default function handleRecipeConversion(recipes, products) {
   const converted = conversion(recipes);
   const ingredientQuantities = sumConverted(converted);
-  const shoppingList = ingredientsToShoppingList(ingredientQuantities, products);
+  const shoppingList = ingredientsToShoppingList(
+    ingredientQuantities,
+    products
+  );
   console.log("ingredientQuantities", ingredientQuantities);
   console.log("products:", products);
-
+  console.log("Shopping list" + shoppingList);
   return shoppingList;
 }
 
-
-
-
 export function sendShoppingList() {
   // console.log("updated shopping list:", updatedShoppingList)
-  return updatedShoppingList
+  return updatedShoppingList;
 }

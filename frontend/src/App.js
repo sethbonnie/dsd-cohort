@@ -10,6 +10,7 @@ import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
 import ingredientSum from "./lib/ingredientSum.js";
 import { sendShoppingList } from "./lib/ingredientSum";
+import Checkbox from "./components/CheckboxImpl.jsx";
 
 const recipes = ingredients["ingredients by recipe"];
 
@@ -52,6 +53,7 @@ function App() {
         <Routes>
           <Route index element={<Recipes {...recipeProps} />} />
           <Route path="/kitchen" element={<Kitchen {...kitchenProps} />} />
+          <Route path="/checkbox" element={<Checkbox />} />
         </Routes>
       </BrowserRouter>
     </div>
