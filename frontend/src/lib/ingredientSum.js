@@ -55,6 +55,7 @@ function sumConverted(converted) {
       };
     }
   }
+  console.log(totalQuantities);
   return totalQuantities;
 }
 

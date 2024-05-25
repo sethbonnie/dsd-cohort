@@ -20,17 +20,24 @@ export default function Grocerylist(props) {
         return total + ", " + item;
       })
     : "";
+  console.log(checkedItems);
 
-  const handleCheck = (event) => {
+  const handleCheck = (event, item) => {
     var updatedList = [...checked];
     console.log(event.target.value);
     if (event.target.checked) {
-      updatedList = [...checked, event.target.value];
+      updatedList = [...checked, item];
+      console.log(item);
     } else {
-      updatedList.splice(checked.indexOf(event.target.value), 1);
+      updatedList.splice(checked.indexOf(item), 1);
     }
     setChecked(updatedList);
   };
+  console.log(checked);
+
+  function handleAddIngredientsToKitchen() {
+    props.onAddGroceryItems(checkedItems);
+  }
 
   const footer = (
     <>
@@ -41,10 +48,6 @@ export default function Grocerylist(props) {
       />
     </>
   );
-
-  function handleAddIngredientsToKitchen() {
-    console.log("add to kitcken");
-  }
 
   return (
     <div className="grocery-list-container">
@@ -58,23 +61,21 @@ export default function Grocerylist(props) {
           <div>Item Name</div>
         </div>
         <ul>
+          {console.log(shoppingList)}
           {shoppingList.map((item, index) => (
             <li className={isChecked(item)} type="checkbox">
               {item.quantity} {item.item} {item.name}
               {index}{" "}
               <input
-                value={item.name}
-                onChange={handleCheck}
+                // value={item.name}
+                onChange={(event) => handleCheck(event, item)}
                 type="checkbox"
               ></input>
-              {console.log(item)}
             </li>
           ))}
         </ul>
-        <div>{`checked items: ${checkedItems}`}</div>
-        <div>{props.handleCallback(checkedItems)}</div>
-        {console.log("props callback" + props.handleCallback(checkedItems))}
       </Card>
+      {console.log(checkedItems)}
     </div>
   );
 }

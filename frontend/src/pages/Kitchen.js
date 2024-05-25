@@ -13,15 +13,15 @@ import handleRecipeConversion from "../lib/ingredientSum";
 
 export default function Kitchen(props) {
   const [addedIngredient, setAddedIngredient] = useState({});
-
+  console.log("added");
   console.log(addedIngredient);
   const [products, setProducts] = useState([]);
 
   const [shoppingList, setShoppingList] = useState(
     handleRecipeConversion(props.weeklySmoothies, products)
   );
-  function CallBack(child) {
-    return <div>message from child {child}</div>;
+  function addGroceryItems(groceryItems) {
+    console.log("add to kitcken", groceryItems);
   }
 
   // console.log("stuff", shoppingList);
@@ -280,7 +280,10 @@ export default function Kitchen(props) {
           </Accordion>
         </div>
       </header>
-      <Grocerylist handleCallback={CallBack} shoppingList={shoppingList} />
+      <Grocerylist
+        onAddGroceryItems={addGroceryItems}
+        shoppingList={shoppingList}
+      />
     </div>
   );
 }

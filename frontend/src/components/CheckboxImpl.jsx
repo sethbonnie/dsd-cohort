@@ -4,7 +4,10 @@ import ReactDOM from "react-dom";
 export default function Checkbox() {
   // State with list of all checked item
   const [checked, setChecked] = useState([]);
-  const checkList = ["Apple", "Banana", "Tea", "Coffee"];
+  const checkList = [
+    { category: "fruit", name: "Apple" },
+    { category: "fruit", name: "Banana" },
+  ];
 
   // Add/Remove checked item from list
   const handleCheck = (event) => {
@@ -37,8 +40,8 @@ export default function Checkbox() {
         <div className="list-container">
           {checkList.map((item, index) => (
             <div key={index}>
-              <input value={item} type="checkbox" onChange={handleCheck} />
-              <span className={isChecked(item)}>{item}</span>
+              <input value={item.name} type="checkbox" onChange={handleCheck} />
+              <span className={isChecked(item.name)}>{item.name}</span>
             </div>
           ))}
         </div>
