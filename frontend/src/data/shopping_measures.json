@@ -88,26 +88,26 @@
     "conversionRate": 15
   },
   "ground nutmeg": {
-      "ingredient": {
-        "measure": "teaspoon"
-      },
-      "shopping": {
-        "measure": "ounces",
-        "amount": 2.5,
-        "item": "bottle"
-      },
-      "conversionRate": 15
+    "ingredient": {
+      "measure": "teaspoon"
+    },
+    "shopping": {
+      "measure": "ounces",
+      "amount": 2.5,
+      "item": "bottle"
+    },
+    "conversionRate": 15
   },
   "ground ginger": {
-      "ingredient": {
-        "measure": "pinch"
-      },
-      "shopping": {
-        "measure": "ounces",
-        "amount": 2.5,
-        "item": "bottle"
-      },
-      "conversionRate": 30
+    "ingredient": {
+      "measure": "pinch"
+    },
+    "shopping": {
+      "measure": "ounces",
+      "amount": 2.5,
+      "item": "bottle"
+    },
+    "conversionRate": 30
   },
   "carrot": {
     "ingredient": {
@@ -122,12 +122,12 @@
   },
   "seedless watermelon": {
     "ingredient": {
-    "measure": "cup"
+      "measure": "cup"
     },
     "shopping": {
-    "measure": "whole",
-    "amount": 1,
-    "item": "whole"
+      "measure": "whole",
+      "amount": 1,
+      "item": "whole"
     },
     "conversionRate": 32
   },
@@ -252,7 +252,4 @@
     },
     "conversionRate": 1
   }
-
 }
-
-    

@@ -123,6 +123,11 @@ export default function Kitchen(props) {
 
   const [cvalue, setCvalue] = useState("");
   const [svalue, setSvalue] = useState("");
+  console.log("cvalue", cvalue);
+
+  console.log("svalue", svalue);
+  //svalue is Unit
+  //cvalue is Category
   const [categories, setCategories] = useState([]);
   const [sizes, setSizes] = useState([]);
 
