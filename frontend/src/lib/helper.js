@@ -95,18 +95,12 @@ function convertGroceryToMyKitchen(ingrQuantities, inventory) {
       if (inventory[i].name === food) {
         console.log("MATCH", inventory[i].name);
         newMeasure = Math.ceil(
-          (inventory[i].quantity * shopping.conversionRate - measure.quantity) /
-            shopping.conversionRate
+          inventory[i].servings * shopping.conversionRate - measure.quantity
         );
-        newItem = shopping.shopping.item;
-        console.log(inventory[i].quantity);
-        console.log(shopping.conversionRate);
-        console.log(measure.quantity);
-        console.log(shopping.conversionRate);
-        console.log(newMeasure);
+        newItem = shopping.ingredient.item;
       } else {
         newMeasure = measure.quantity;
-        newItem = shopping.shopping.item;
+        newItem = shopping.ingredient.item;
       }
     }
 
@@ -114,10 +108,8 @@ function convertGroceryToMyKitchen(ingrQuantities, inventory) {
 
     const item = {
       name: name,
-      quantity: newMeasure,
+      servings: newMeasure,
       item: newItem,
-      size: "",
-      category: "",
     };
     addedGroceries.push(item);
   }

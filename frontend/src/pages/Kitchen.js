@@ -10,6 +10,7 @@ import "./kitchen.css";
 import "primeicons/primeicons.css";
 import Grocerylist from "../components/Grocerylist";
 import handleRecipeConversion from "../lib/helper";
+import shoppingMeasures from "../data/shopping_measures.json";
 
 export default function Kitchen(props) {
   const [addedIngredient, setAddedIngredient] = useState({});
@@ -20,7 +21,27 @@ export default function Kitchen(props) {
     handleRecipeConversion(props.weeklySmoothies, ingredients)
   );
   function handleAddToKitchen(groceryItems) {
-    console.log("add to kitchen", groceryItems);
+    groceryItems.forEach((groceryItem) => {
+      let shopping = shoppingMeasures[groceryItem.name];
+      let newServing = groceryItem.quantity * shopping.conversionRate;
+
+      setAddedIngredient({
+        name: groceryItem.name,
+        servings: newServing,
+        size: shopping.ingredient.measure,
+      });
+
+      const newIngredients = [...ingredients, addedIngredient];
+      setIngredients(newIngredients);
+    });
+    console.log("handle add to kitchen", ingredients);
+
+    /**list newingredients =[]
+     * loop through groceryItems
+     *    convert each groceryItem to an ingredient
+     *    add to newIngredients
+     * combine ingredients and newIngredients and pass to setIngredients
+     */
   }
 
   const onServingsChange = (rowData, event) => {
