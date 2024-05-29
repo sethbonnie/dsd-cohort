@@ -8,8 +8,8 @@ import Grocerylist from "./components/Grocerylist.js";
 import Recipes from "./pages/Recipes.jsx";
 import NutritionFacts from "./components/NutritionFacts";
 import ingredients from "./data/ingredients.json";
-import ingredientSum from "./lib/ingredientSum.js";
-import { sendShoppingList } from "./lib/ingredientSum";
+import helper from "./lib/helper.js";
+import { sendShoppingList } from "./lib/helper";
 import Checkbox from "./components/CheckboxImpl.jsx";
 
 const recipes = ingredients["ingredients by recipe"];

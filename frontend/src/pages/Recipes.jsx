@@ -8,7 +8,7 @@ import NutritionFacts from "../components/NutritionFacts";
 import { Tooltip } from "primereact/tooltip";
 import "./Recipes.css";
 import { useState } from "react";
-import handleRecipeConversion from "../lib/ingredientSum";
+import handleRecipeConversion from "../lib/helper";
 
 function Recipes({
   days,
@@ -17,9 +17,8 @@ function Recipes({
   handleDragStart,
   handleDragEnd,
   smoothies,
-  weeklySmoothies
+  weeklySmoothies,
 }) {
-
   function Header(props) {
     return <img src={props.src} alt={props.text} />;
   }
@@ -27,7 +26,11 @@ function Recipes({
   const draggableMarkup = smoothies.map((smoothie) => (
     <div>
       {!isDragging && (
-        <Tooltip target={`.smoothie-${smoothie.id}`} mouseTrack mouseTrackTop={170}>
+        <Tooltip
+          target={`.smoothie-${smoothie.id}`}
+          mouseTrack
+          mouseTrackTop={170}
+        >
           <NutritionFacts recipe={smoothie.text}></NutritionFacts>
         </Tooltip>
       )}
@@ -44,9 +47,9 @@ function Recipes({
     </div>
   ));
 
-  function handleSubmitRecipes(){
-// console.log(weeklySmoothies)
-    let test = handleRecipeConversion(weeklySmoothies)
+  function handleSubmitRecipes() {
+    // console.log(weeklySmoothies)
+    let test = handleRecipeConversion(weeklySmoothies);
     // console.log(weeklySmoothies)
   }
 

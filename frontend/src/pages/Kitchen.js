@@ -9,55 +9,28 @@ import { Accordion, AccordionTab } from "primereact/accordion";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
 import Grocerylist from "../components/Grocerylist";
-import handleRecipeConversion from "../lib/ingredientSum";
+import handleRecipeConversion from "../lib/helper";
 
 export default function Kitchen(props) {
   const [addedIngredient, setAddedIngredient] = useState({});
-  console.log("added");
-  console.log(addedIngredient);
-  const [products, setProducts] = useState([]);
+
+  const [ingredients, setIngredients] = useState([]);
 
   const [shoppingList, setShoppingList] = useState(
-    handleRecipeConversion(props.weeklySmoothies, products)
+    handleRecipeConversion(props.weeklySmoothies, ingredients)
   );
-  function addGroceryItems(groceryItems) {
-    console.log("add to kitcken", groceryItems);
+  function handleAddToKitchen(groceryItems) {
+    console.log("add to kitchen", groceryItems);
   }
 
-  // console.log("stuff", shoppingList);
-  const onQuantityChange = (rowData, event) => {
-    const updatedProducts = products.map((product) => {
-      if (product.name === rowData.name) {
-        return { ...product, quantity: event.value };
-      }
-      return product;
-    });
-    setProducts(updatedProducts);
-  };
-
   const onServingsChange = (rowData, event) => {
-    const updatedProducts = products.map((product) => {
-      if (product.name === rowData.name) {
-        return { ...product, servings: event.value };
+    const updatedIngredients = ingredients.map((ingredient) => {
+      if (ingredient.name === rowData.name) {
+        return { ...ingredient, servings: event.value };
       }
-      return product;
+      return ingredient;
     });
-    setProducts(updatedProducts);
-  };
-
-  const quantityEditor = (rowData) => {
-    return (
-      <InputNumber
-        value={rowData.quantity}
-        onValueChange={(e) => onQuantityChange(rowData, e)}
-        showButtons
-        buttonLayout="horizontal"
-        step={0.25}
-        decrementButtonClassName="p-button-danger"
-        incrementButtonClassName="p-button-success"
-        inputClassName="quantity-input"
-      />
-    );
+    setIngredients(updatedIngredients);
   };
 
   const servingsEditor = (rowData) => {
@@ -70,7 +43,7 @@ export default function Kitchen(props) {
         step={1}
         decrementButtonClassName="p-button-danger"
         incrementButtonClassName="p-button-success"
-        inputClassName="quantity-input"
+        inputClassName="serving-input"
       />
     );
   };
@@ -81,72 +54,10 @@ export default function Kitchen(props) {
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [filteredItems, setFilteredItems] = useState(null);
-  const groupedItems = [
-    {
-      label: "Fruit",
-      code: "ft",
-      items: [
-        { label: "Banana", value: "Banana" },
-        { label: "Strawberry", value: "Strawberry" },
-        { label: "Apple", value: "Apple" },
-        { label: "Orange", value: "Orange" },
-      ],
-    },
-    {
-      label: "Vegetable",
-      code: "vt",
-      items: [
-        { label: "Kale", value: "Kale" },
-        { label: "Carrot", value: "Carrot" },
-        { label: "Avocado", value: "Avocado" },
-        { label: "Spinach", value: "Spinach" },
-      ],
-    },
-  ];
 
-  const search = (event) => {
-    let query = event.query;
-    let _filteredItems = [];
+  const [size, setSize] = useState("");
 
-    for (let country of groupedItems) {
-      let filteredItems = country.items.filter(
-        (item) => item.label.toLowerCase().indexOf(query.toLowerCase()) !== -1
-      );
-
-      if (filteredItems && filteredItems.length) {
-        _filteredItems.push({ ...country, ...{ items: filteredItems } });
-      }
-    }
-
-    setFilteredItems(_filteredItems);
-  };
-
-  const [cvalue, setCvalue] = useState("");
-  const [svalue, setSvalue] = useState("");
-  console.log("cvalue", cvalue);
-
-  console.log("svalue", svalue);
-  //svalue is Unit
-  //cvalue is Category
-  const [categories, setCategories] = useState([]);
   const [sizes, setSizes] = useState([]);
-
-  const search_cat = (event) => {
-    let _categories = [
-      "fruit",
-      "vegetable",
-      "greens",
-      "sweetener",
-      "dairy",
-      "flavoring",
-      "spice",
-    ];
-    setCategories(
-      event.query
-        ? [...Array().keys()].map((category) => event.query)
-        : _categories
-    );
-  };
 
   const search_size = (event) => {
     let _size = ["gallon", "cup", "bag", "jar"];
@@ -155,22 +66,22 @@ export default function Kitchen(props) {
     );
   };
 
-  const [value2, setValue2] = useState();
+  const [servings, setServings] = useState();
 
   useEffect(() => {
     setAddedIngredient({
       name: selectedItem,
-      quantity: value2,
-      item: "",
-      size: svalue,
-      category: cvalue,
+      servings: servings,
+      size: size,
     });
-  }, [selectedItem, cvalue, svalue, value2]);
+  }, [selectedItem, size, servings]);
 
   function handleAddItem() {
-    const newProducts = [...products, addedIngredient];
-    setProducts(newProducts);
-    setShoppingList(handleRecipeConversion(props.weeklySmoothies, newProducts));
+    const newIngredients = [...ingredients, addedIngredient];
+    setIngredients(newIngredients);
+    setShoppingList(
+      handleRecipeConversion(props.weeklySmoothies, newIngredients)
+    );
   }
 
   return (
@@ -181,52 +92,28 @@ export default function Kitchen(props) {
         </a>
         <div className="card">
           <DataTable
-            value={products}
+            value={ingredients}
             showGridlines
             removableSort
-            tableStyle={{ minWidth: "50rem" }}
+            tableStyle={{ minWidth: "30rem" }}
             rows={5}
             inline
             scrollHeight="640px"
             breakpoint="10px"
           >
-            <Column
-              field="name"
-              header="Item Name"
-              sortable
-              style={{ width: "20%" }}
-            ></Column>
-            <Column
-              field="category"
-              header="Category"
-              sortable
-              style={{ width: "20%" }}
-            ></Column>
-            <Column
-              field="size"
-              header="Item"
-              sortable
-              style={{ width: "10%" }}
-            ></Column>
-            <Column
-              field="quantity"
-              header="Quantity"
-              body={quantityEditor}
-              sortable
-              style={{ width: "10%" }}
-            ></Column>
+            <Column field="name" header="Item Name" sortable></Column>
+
             <Column
               field="servings"
               header="Servings"
               body={servingsEditor}
               sortable
-              style={{ width: "10%" }}
             ></Column>
+            <Column field="size" header="Size" sortable></Column>
             <Column
               field="delete"
               header="Delete"
               body={deleteHandler}
-              style={{ width: "10%" }}
             ></Column>
           </DataTable>
         </div>
@@ -243,34 +130,23 @@ export default function Kitchen(props) {
                 //optionGroupChildren="items"
                 placeholder="enter item name"
               />
-
-              <AutoComplete
-                value={cvalue}
-                suggestions={categories}
-                completeMethod={search_cat}
-                onChange={(e) => setCvalue(e.value)}
-                dropdown
-                placeholder="select category"
-              />
-
-              <AutoComplete
-                value={svalue}
-                suggestions={sizes}
-                completeMethod={search_size}
-                onChange={(e) => setSvalue(e.value)}
-                dropdown
-                placeholder="select size/volume"
-              />
-
               <InputNumber
                 inputId="horizontal-buttons"
-                placeholder="enter item quantity"
-                onValueChange={(e) => setValue2(e.value)}
+                placeholder="enter servings"
+                onValueChange={(e) => setServings(e.value)}
                 showButtons
                 buttonLayout="horizontal"
                 step={0.25}
                 decrementButtonClassName="p-button-danger"
                 incrementButtonClassName="p-button-success"
+              />
+              <AutoComplete
+                value={size}
+                suggestions={sizes}
+                completeMethod={search_size}
+                onChange={(e) => setSize(e.value)}
+                dropdown
+                placeholder="select size/volume"
               />
 
               <br></br>
@@ -286,7 +162,7 @@ export default function Kitchen(props) {
         </div>
       </header>
       <Grocerylist
-        onAddGroceryItems={addGroceryItems}
+        onAddGroceryItems={handleAddToKitchen}
         shoppingList={shoppingList}
       />
     </div>

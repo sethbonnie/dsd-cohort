@@ -90,7 +90,6 @@ function convertGroceryToMyKitchen(ingrQuantities, inventory) {
     let newItem;
     //will subtract amount from the grocery list from the inventory AFTER adding to inventory
     for (let i = 0; i < inventory.length; i++) {
-      // console.log("loop inventory", inventory[i]);
       let shopping = shoppingMeasures[food];
 
       if (inventory[i].name === food) {
@@ -108,18 +107,10 @@ function convertGroceryToMyKitchen(ingrQuantities, inventory) {
       } else {
         newMeasure = measure.quantity;
         newItem = shopping.shopping.item;
-        //how to get size and category when you don't "Add Item"??
       }
-
-      // const foundItems = inventory.filter((item) => item.name === food);
-
-      // console.log("match", foundItems);
     }
-    // let shopping = shoppingMeasures[food];
-    // let newMeasure = measure.quantity * shopping.conversionRate; //*conversion rate;
-    // console.log("new measure", newMeasure);
+
     let name = food;
-    // let quantity = newMeasure;
 
     const item = {
       name: name,
