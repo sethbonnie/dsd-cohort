@@ -5,7 +5,6 @@ import { Button } from "primereact/button";
 import { AutoComplete } from "primereact/autocomplete";
 import { InputNumber } from "primereact/inputnumber";
 import { Accordion, AccordionTab } from "primereact/accordion";
-// import "primereact/resources/themes/arya-orange/theme.css";
 import "./kitchen.css";
 import "primeicons/primeicons.css";
 import Grocerylist from "../components/Grocerylist";
@@ -21,29 +20,43 @@ export default function Kitchen(props) {
     handleRecipeConversion(props.weeklySmoothies, ingredients)
   );
   function handleAddToKitchen(groceryItems) {
+    let newIngredients = [];
+    let ingredient;
+
     groceryItems.forEach((groceryItem) => {
-      let shopping = shoppingMeasures[groceryItem.name];
-      let newServing = groceryItem.quantity * shopping.conversionRate;
+      let item = shoppingMeasures[groceryItem.name];
+      let found = ingredients.find(
+        (ingredient) => ingredient.name === groceryItem.name
+      );
 
-      setAddedIngredient({
-        name: groceryItem.name,
-        servings: newServing,
-        size: shopping.ingredient.measure,
-      });
+      console.log("found", found);
+      if (!found) {
+        ingredient = {
+          name: groceryItem.name,
+          servings: groceryItem.quantity * item.conversionRate,
+          size: item.ingredient.measure,
+        };
+      } else {
+        ingredients.map((ingr) => {
+          if (ingr.name === groceryItem.name) {
+            console.log(ingr);
+            return (ingredient = {
+              ...ingr,
+              servings:
+                ingr.servings + groceryItem.quantity * item.conversionRate,
+            });
+          }
+        });
+      }
 
-      const newIngredients = [...ingredients, addedIngredient];
-      setIngredients(newIngredients);
+      newIngredients.push(ingredient);
     });
-    console.log("handle add to kitchen", ingredients);
+    ingredients.filter((value, index, array) => array.indexOf(value) === index);
 
-    /**list newingredients =[]
-     * loop through groceryItems
-     *    convert each groceryItem to an ingredient
-     *    add to newIngredients
-     * combine ingredients and newIngredients and pass to setIngredients
-     */
+    setIngredients([...ingredients, ...newIngredients]);
   }
 
+  console.log("kitchen shopping list", shoppingList);
   const onServingsChange = (rowData, event) => {
     const updatedIngredients = ingredients.map((ingredient) => {
       if (ingredient.name === rowData.name) {
@@ -99,10 +112,11 @@ export default function Kitchen(props) {
 
   function handleAddItem() {
     const newIngredients = [...ingredients, addedIngredient];
+    console.log("newIngredients", newIngredients);
     setIngredients(newIngredients);
-    setShoppingList(
-      handleRecipeConversion(props.weeklySmoothies, newIngredients)
-    );
+    // setShoppingList(
+    //   handleRecipeConversion(props.weeklySmoothies, newIngredients)
+    // );
   }
 
   return (
@@ -144,11 +158,7 @@ export default function Kitchen(props) {
               <AutoComplete
                 value={selectedItem}
                 onChange={(e) => setSelectedItem(e.value)}
-                //suggestions={filteredItems}
-                //completeMethod={search}
                 field="label"
-                //optionGroupLabel="label"
-                //optionGroupChildren="items"
                 placeholder="enter item name"
               />
               <InputNumber
