@@ -28,30 +28,28 @@ export default function Kitchen(props) {
       let found = ingredients.find(
         (ingredient) => ingredient.name === groceryItem.name
       );
-
-      console.log("found", found);
       if (!found) {
         ingredient = {
           name: groceryItem.name,
           servings: groceryItem.quantity * item.conversionRate,
           size: item.ingredient.measure,
         };
+
+        newIngredients.push(ingredient);
       } else {
-        ingredients.map((ingr) => {
+        ingredients.forEach((ingr) => {
           if (ingr.name === groceryItem.name) {
-            console.log(ingr);
-            return (ingredient = {
+            ingr = {
               ...ingr,
-              servings:
-                ingr.servings + groceryItem.quantity * item.conversionRate,
-            });
+              servings: (ingr.servings +=
+                groceryItem.quantity * item.conversionRate),
+            };
+            console.log("ingr", ingr);
           }
         });
       }
-
-      newIngredients.push(ingredient);
     });
-    ingredients.filter((value, index, array) => array.indexOf(value) === index);
+    // ingredients.filter((value, index, array) => array.indexOf(value) === index);
 
     setIngredients([...ingredients, ...newIngredients]);
   }
