@@ -44,12 +44,10 @@ export default function Kitchen(props) {
               servings: (ingr.servings +=
                 groceryItem.quantity * item.conversionRate),
             };
-            console.log("ingr", ingr);
           }
         });
       }
     });
-    // ingredients.filter((value, index, array) => array.indexOf(value) === index);
 
     setIngredients([...ingredients, ...newIngredients]);
   }
@@ -109,9 +107,39 @@ export default function Kitchen(props) {
   }, [selectedItem, size, servings]);
 
   function handleAddItem() {
-    const newIngredients = [...ingredients, addedIngredient];
+    console.log("selected item", selectedItem);
+    let newIngredients = [];
+    let ingredient;
+
+    let item = shoppingMeasures[addedIngredient.name];
+
+    let found = ingredients.find(
+      (ingredient) => ingredient.name === addedIngredient.name
+    );
+    if (!found) {
+      ingredient = {
+        name: addedIngredient.name,
+        servings: addedIngredient.servings,
+        size: item.ingredient.measure,
+      };
+
+      newIngredients.push(ingredient);
+    } else {
+      console.log("ingredients", ingredients);
+      ingredients.forEach((ingr) => {
+        if (ingr.name === addedIngredient.name) {
+          ingr = {
+            ...ingr,
+            servings: (ingr.servings += addedIngredient.servings),
+          };
+        }
+      });
+    }
+
+    setIngredients([...ingredients, ...newIngredients]);
+    // const newIngredients = [...ingredients, addedIngredient];
     console.log("newIngredients", newIngredients);
-    setIngredients(newIngredients);
+    // setIngredients(newIngredients);
     // setShoppingList(
     //   handleRecipeConversion(props.weeklySmoothies, newIngredients)
     // );
